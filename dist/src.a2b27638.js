@@ -134,7 +134,25 @@ var onClickAdd = function onClickAdd() {
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", function () {
     //   押された完了ボタンの親タグ(div)を未完了リストから削除
-    deleteFromIncompleteList(completeButton.parentNode);
+    deleteFromIncompleteList(completeButton.parentNode); //   完了リストに追加する要素
+
+    var addTarget = completeButton.parentNode; //   TODO内容テキストを取得
+
+    var text = addTarget.firstElementChild.innerText;
+    console.log(text); //   div以下を初期化
+
+    addTarget.textContent = null; //   liタグを生成
+
+    var li = document.createElement("li");
+    li.innerText = text; //   buttonタグ生成
+
+    var backButton = document.createElement("button");
+    backButton.innerText = "戻す"; //.  divタグの子要素に各要素を設定
+
+    addTarget.appendChild(li);
+    addTarget.appendChild(backButton); //.  完了リストについか
+
+    document.getElementById("complete-list").appendChild(addTarget);
   }); //button(削除)タグ生成
 
   var deleteButton = document.createElement("button");
@@ -187,7 +205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "41971" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43519" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
